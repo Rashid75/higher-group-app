@@ -1,36 +1,28 @@
 <ion-header>
-  <ion-navbar> <ion-title> Higher Ground App </ion-title> </ion-navbar>
+  <ion-navbar>
+    <ion-title>
+     Higher Ground App
+    </ion-title>
+  </ion-navbar>
 </ion-header>
 
 <ion-content>
   <div>
     <ion-list inset>
+
       <ion-item>
-        <ion-label>Start</ion-label>
-        <ion-input
-          type="search"
-          [(ngModel)]="originInput"
-          name="start"
-          clearInput
-          id="start"
-        ></ion-input>
+        
+          <ion-label >Start</ion-label>
+          <ion-input  type="search"  [(ngModel)]="originInput"  name="start"    clearInput id="start"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>End</ion-label>
-        <ion-input
-          type="search"
-          [(ngModel)]="destinationInput"
-          id="end"
-          name="end"
-          clearInput
-        ></ion-input>
+        <ion-label >End</ion-label>
+        <ion-input  type="search" [(ngModel)]="destinationInput" id="end" name="end"    clearInput></ion-input>
+      </ion-item>
+      <ion-item>
+        <button ion-button   full (click)="calculateAndDisplayRoute()">Draw</button>
       </ion-item>
     </ion-list>
-    <div >
-      <button ion-button style="width:48%" (click)="calculateAndDisplayRoute()">Draw</button>
-      <button ion-button style="width:48%" (click)="navigate()">Navigate</button>
-    </div>
-    
   </div>
   <div #map id="map"></div>
 </ion-content>
