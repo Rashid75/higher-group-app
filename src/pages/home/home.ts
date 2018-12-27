@@ -24,6 +24,9 @@ export class HomePage {
   originInput = "";
   destinationInput = "";
   markerArray = [];
+  rendrerArray = [];
+  routesArray = [];
+  response: any;
   constructor(
     public navCtrl: NavController,
     private launchNavigator: LaunchNavigator,
@@ -67,11 +70,19 @@ export class HomePage {
       this.initMap();
     }, 2000);
   }
-  initMap() {
+  async initMap() {
+    const current = await this.getNativeCurrentLocation();
     this.map = new google.maps.Map(this.mapElement.nativeElement, {
-      zoom: 7,
-      center: { lat: 41.85, lng: -87.65 }
+      zoom: 12,
+      center: { lat: current["lat"], lng: current["lng"] }
     });
+    var marker = new google.maps.Marker();
+    marker.setMap(this.map);
+    marker.setPosition({
+      lat: current["lat"],
+      lng: current["lng"]
+    });
+    this.markerArray.push(marker);
     this.directionsDisplay.setMap(this.map);
   }
 
@@ -81,6 +92,7 @@ export class HomePage {
       alert("Current location not found");
       return;
     }
+    this.directionsDisplay.setDirections({ routes: [] });
     const map = this.map;
     this.clearMarker();
     const loader = this.createLoader("Searching");
@@ -95,9 +107,9 @@ export class HomePage {
       (response, status) => {
         loader.dismiss();
         if (status === "OK") {
-          this.directionsDisplay.setDirections(response);
           let alternate = true;
-          console.log(response.routes.length);
+          this.response = response;
+          console.log("routes " + response.routes.length);
           response.routes.forEach((el1, ind1) => {
             let alter_path = response.routes[ind1].overview_path;
             alternate = true;
@@ -108,18 +120,37 @@ export class HomePage {
                 el2.lat(),
                 el2.lng()
               );
-              if (parseInt(distance.toFixed(1)) === 3 && alternate) {
+              // console.log(distance)
+              if (parseInt(distance.toFixed(1)) === 5 && alternate) {
+                console.log(distance);
                 var marker = new google.maps.Marker();
                 marker.setMap(map);
                 marker.setPosition({
                   lat: el2.lat(),
                   lng: el2.lng()
                 });
+                var infowindow = new google.maps.InfoWindow({
+                  content: el2.lat() + " , " + el2.lng()
+                });
+                marker.addListener("click", function() {
+                  infowindow.open(map, marker);
+                });
                 this.markerArray.push(marker);
                 console.log("--marker---" + distance);
                 alternate = false;
               }
             });
+          });
+
+          this.routesArray = response.routes.slice();
+          response.routes.length = 0;
+          this.routesArray.forEach((el1, ind1) => {
+            response.routes[0] = el1;
+            let render = new google.maps.DirectionsRenderer();
+            render.setMap(map);
+            render.setDirections(response);
+            this.rendrerArray.push(render);
+            render = null;
           });
         } else {
           this.toast
@@ -135,6 +166,9 @@ export class HomePage {
   clearMarker() {
     for (var i = 0; i < this.markerArray.length; i++) {
       this.markerArray[i].setMap(null);
+      if (this.rendrerArray[i]) {
+        this.rendrerArray[i].setDirections({ routes: [] });
+      }
     }
   }
 
@@ -147,6 +181,7 @@ export class HomePage {
       marker.setPosition(myRoute.steps[i].start_location);
     }
   }
+
   getNativeCurrentLocation() {
     return new Promise((resolve, reject) => {
       return this.geolocation
