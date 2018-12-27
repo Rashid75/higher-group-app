@@ -24,6 +24,7 @@ export class HomePage {
   originInput = "";
   destinationInput = "";
   markerArray = [];
+  routesArray = [];
   constructor(
     public navCtrl: NavController,
     private launchNavigator: LaunchNavigator,
@@ -95,9 +96,8 @@ export class HomePage {
       (response, status) => {
         loader.dismiss();
         if (status === "OK") {
-          this.directionsDisplay.setDirections(response);
           let alternate = true;
-          console.log(response.routes.length);
+
           response.routes.forEach((el1, ind1) => {
             let alter_path = response.routes[ind1].overview_path;
             alternate = true;
@@ -115,11 +115,27 @@ export class HomePage {
                   lat: el2.lat(),
                   lng: el2.lng()
                 });
+                var infowindow = new google.maps.InfoWindow({
+                  content: el2.lat() + " , " + el2.lng()
+                });
+                marker.addListener("click", function() {
+                  infowindow.open(map, marker);
+                });
                 this.markerArray.push(marker);
                 console.log("--marker---" + distance);
                 alternate = false;
               }
             });
+          });
+
+          this.routesArray = response.routes.slice();
+          response.routes.length = 0;
+          this.routesArray.forEach((el1, ind1) => {
+            response.routes[0] = el1;
+            let render = new google.maps.DirectionsRenderer();
+            render.setMap(map);
+            render.setDirections(response);
+            render = null;
           });
         } else {
           this.toast

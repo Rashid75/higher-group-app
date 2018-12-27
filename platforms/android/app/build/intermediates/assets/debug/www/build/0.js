@@ -771,6 +771,7 @@ var HomePage = (function () {
         this.originInput = "";
         this.destinationInput = "";
         this.markerArray = [];
+        this.routesArray = [];
     }
     HomePage.prototype.createLoader = function (message) {
         return this.loading.create({
@@ -834,9 +835,7 @@ var HomePage = (function () {
                         }, function (response, status) {
                             loader.dismiss();
                             if (status === "OK") {
-                                _this.directionsDisplay.setDirections(response);
                                 var alternate_1 = true;
-                                console.log(response.routes.length);
                                 response.routes.forEach(function (el1, ind1) {
                                     var alter_path = response.routes[ind1].overview_path;
                                     alternate_1 = true;
@@ -849,11 +848,26 @@ var HomePage = (function () {
                                                 lat: el2.lat(),
                                                 lng: el2.lng()
                                             });
+                                            var infowindow = new google.maps.InfoWindow({
+                                                content: el2.lat() + " , " + el2.lng()
+                                            });
+                                            marker.addListener("click", function () {
+                                                infowindow.open(map, marker);
+                                            });
                                             _this.markerArray.push(marker);
                                             console.log("--marker---" + distance);
                                             alternate_1 = false;
                                         }
                                     });
+                                });
+                                _this.routesArray = response.routes.slice();
+                                response.routes.length = 0;
+                                _this.routesArray.forEach(function (el1, ind1) {
+                                    response.routes[0] = el1;
+                                    var render = new google.maps.DirectionsRenderer();
+                                    render.setMap(map);
+                                    render.setDirections(response);
+                                    render = null;
                                 });
                             }
                             else {
@@ -940,7 +954,7 @@ __decorate([
 ], HomePage.prototype, "mapElement", void 0);
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-        selector: "page-home",template:/*ion-inline-start:"E:\Development\Visual Studio Code\Ionic\higher-group-app\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar> <ion-title> Higher Ground App </ion-title> </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <div>\n    <ion-list inset>\n     \n      <ion-item>\n        <ion-label>Destination</ion-label>\n        <ion-input\n          type="search"\n          [(ngModel)]="destinationInput"\n          id="end"\n          name="end"\n          clearInput\n        ></ion-input>\n      </ion-item>\n    </ion-list>\n    <div >\n      <button ion-button style="width:98%" (click)="calculateAndDisplayRoute()">Draw</button>\n    </div>\n    \n  </div>\n  <div #map id="map"></div>\n</ion-content>\n'/*ion-inline-end:"E:\Development\Visual Studio Code\Ionic\higher-group-app\src\pages\home\home.html"*/
+        selector: "page-home",template:/*ion-inline-start:"E:\Development\Visual Studio Code\Ionic\higher-group-app\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar> <ion-title> Higher Ground App </ion-title> </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <div>\n\n    <ion-list inset>\n\n     \n\n      <ion-item>\n\n        <ion-label>Destination</ion-label>\n\n        <ion-input\n\n          type="search"\n\n          [(ngModel)]="destinationInput"\n\n          id="end"\n\n          name="end"\n\n          clearInput\n\n        ></ion-input>\n\n      </ion-item>\n\n    </ion-list>\n\n    <div >\n\n      <button ion-button style="width:98%" (click)="calculateAndDisplayRoute()">Draw</button>\n\n    </div>\n\n    \n\n  </div>\n\n  <div #map id="map"></div>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Development\Visual Studio Code\Ionic\higher-group-app\src\pages\home\home.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_3__ionic_native_launch_navigator__["a" /* LaunchNavigator */],
