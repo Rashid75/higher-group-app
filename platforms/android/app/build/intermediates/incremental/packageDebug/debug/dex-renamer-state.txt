@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #Fri Dec 28 21:34:44 PKT 2018
+=======
+#Fri Dec 28 00:05:46 PKT 2018
+>>>>>>> a15945f59c68cf4c3cbba098965b5d420bbb32ec
 base.0=E\:\\Development\\Visual Studio Code\\Ionic\\higher-group-app\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
 renamed.0=classes.dex

@@ -978,20 +978,16 @@ var HomePage = (function () {
 }());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* ViewChild */])("map"),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
 ], HomePage.prototype, "mapElement", void 0);
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
         selector: "page-home",template:/*ion-inline-start:"E:\Development\Visual Studio Code\Ionic\higher-group-app\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar> <ion-title> Higher Ground App </ion-title> </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <div>\n\n    <ion-list inset>\n\n      <ion-item>\n\n        <ion-label>Destination</ion-label>\n\n        <ion-input\n\n          type="search"\n\n          [(ngModel)]="destinationInput"\n\n          id="end"\n\n          name="end"\n\n          clearInput\n\n        ></ion-input>\n\n      </ion-item>\n\n    </ion-list>\n\n    <!-- <div>\n\n      <span *ngIf="response"\n\n        >Current : {{ response.routes[0].legs[0].start_location.lat() }},\n\n        {{ response.routes[0].legs[0].start_location.lng() }}</span\n\n      >\n\n      <span *ngIf="response"\n\n        >Destination : {{ response.routes[0].legs[0].end_location.lat() }},\n\n        {{ response.routes[0].legs[0].end_location.lng() }}</span\n\n      >\n\n    </div> -->\n\n    <div>\n\n      <button ion-button style="width:98%" (click)="calculateAndDisplayRoute()">\n\n        Draw\n\n      </button>\n\n    </div>\n\n  </div>\n\n  <div #map id="map"></div>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Development\Visual Studio Code\Ionic\higher-group-app\src\pages\home\home.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_3__ionic_native_launch_navigator__["a" /* LaunchNavigator */],
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* NgZone */],
-        __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ToastController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */]])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_launch_navigator__["a" /* LaunchNavigator */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_launch_navigator__["a" /* LaunchNavigator */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* NgZone */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* NgZone */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ToastController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */]) === "function" && _g || Object])
 ], HomePage);
 
+var _a, _b, _c, _d, _e, _f, _g;
 //# sourceMappingURL=home.js.map
 
 /***/ })

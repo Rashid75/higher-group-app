@@ -771,7 +771,10 @@ var HomePage = (function () {
         this.originInput = "";
         this.destinationInput = "";
         this.markerArray = [];
+<<<<<<< HEAD
         this.rendrerArray = [];
+=======
+>>>>>>> a15945f59c68cf4c3cbba098965b5d420bbb32ec
         this.routesArray = [];
     }
     HomePage.prototype.createLoader = function (message) {
@@ -856,8 +859,11 @@ var HomePage = (function () {
                             loader.dismiss();
                             if (status === "OK") {
                                 var alternate_1 = true;
+<<<<<<< HEAD
                                 _this.response = response;
                                 console.log("routes " + response.routes.length);
+=======
+>>>>>>> a15945f59c68cf4c3cbba098965b5d420bbb32ec
                                 response.routes.forEach(function (el1, ind1) {
                                     var alter_path = response.routes[ind1].overview_path;
                                     alternate_1 = true;
@@ -891,7 +897,10 @@ var HomePage = (function () {
                                     var render = new google.maps.DirectionsRenderer();
                                     render.setMap(map);
                                     render.setDirections(response);
+<<<<<<< HEAD
                                     _this.rendrerArray.push(render);
+=======
+>>>>>>> a15945f59c68cf4c3cbba098965b5d420bbb32ec
                                     render = null;
                                 });
                             }
@@ -982,7 +991,11 @@ __decorate([
 ], HomePage.prototype, "mapElement", void 0);
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+<<<<<<< HEAD
         selector: "page-home",template:/*ion-inline-start:"E:\Development\Visual Studio Code\Ionic\higher-group-app\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar> <ion-title> Higher Ground App </ion-title> </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <div>\n\n    <ion-list inset>\n\n      <ion-item>\n\n        <ion-label>Destination</ion-label>\n\n        <ion-input\n\n          type="search"\n\n          [(ngModel)]="destinationInput"\n\n          id="end"\n\n          name="end"\n\n          clearInput\n\n        ></ion-input>\n\n      </ion-item>\n\n    </ion-list>\n\n    <!-- <div>\n\n      <span *ngIf="response"\n\n        >Current : {{ response.routes[0].legs[0].start_location.lat() }},\n\n        {{ response.routes[0].legs[0].start_location.lng() }}</span\n\n      >\n\n      <span *ngIf="response"\n\n        >Destination : {{ response.routes[0].legs[0].end_location.lat() }},\n\n        {{ response.routes[0].legs[0].end_location.lng() }}</span\n\n      >\n\n    </div> -->\n\n    <div>\n\n      <button ion-button style="width:98%" (click)="calculateAndDisplayRoute()">\n\n        Draw\n\n      </button>\n\n    </div>\n\n  </div>\n\n  <div #map id="map"></div>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Development\Visual Studio Code\Ionic\higher-group-app\src\pages\home\home.html"*/
+=======
+        selector: "page-home",template:/*ion-inline-start:"E:\Development\Visual Studio Code\Ionic\higher-group-app\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar> <ion-title> Higher Ground App </ion-title> </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <div>\n\n    <ion-list inset>\n\n     \n\n      <ion-item>\n\n        <ion-label>Destination</ion-label>\n\n        <ion-input\n\n          type="search"\n\n          [(ngModel)]="destinationInput"\n\n          id="end"\n\n          name="end"\n\n          clearInput\n\n        ></ion-input>\n\n      </ion-item>\n\n    </ion-list>\n\n    <div >\n\n      <button ion-button style="width:98%" (click)="calculateAndDisplayRoute()">Draw</button>\n\n    </div>\n\n    \n\n  </div>\n\n  <div #map id="map"></div>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Development\Visual Studio Code\Ionic\higher-group-app\src\pages\home\home.html"*/
+>>>>>>> a15945f59c68cf4c3cbba098965b5d420bbb32ec
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_3__ionic_native_launch_navigator__["a" /* LaunchNavigator */],

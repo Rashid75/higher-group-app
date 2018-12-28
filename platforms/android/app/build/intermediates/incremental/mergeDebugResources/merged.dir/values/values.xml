@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="activity_name">@string/launcher_name</string>
+<<<<<<< HEAD
     <string name="app_name">Higher Ground</string>
+=======
+    <string name="app_name">MyApp</string>
+>>>>>>> a15945f59c68cf4c3cbba098965b5d420bbb32ec
     <string name="launcher_name">@string/app_name</string>
 </resources>
